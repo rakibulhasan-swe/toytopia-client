@@ -37,17 +37,17 @@ const NavigationBar = () => {
                 className={({ isActive }) =>
                   isActive ? "active nav-link fw-bold px-3" : "nav-link px-3"
                 }
-                to={"/about"}
+                to={"/allToys"}
               >
-                About
+                All Toys
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "active nav-link fw-bold px-3" : "nav-link px-3"
                 }
-                to={"/blog"}
+                to={"/blogs"}
               >
-                Blog
+                Blogs
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
@@ -56,6 +56,14 @@ const NavigationBar = () => {
                 to={"/contact"}
               >
                 Contact
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "active nav-link fw-bold px-3" : "nav-link px-3"
+                }
+                to={"/login"}
+              >
+                Login
               </NavLink>
             </Nav>
             <div className="d-flex align-items-center">

@@ -1,48 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
-import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { FaBeer, FaGithub, FaGoogle } from "react-icons/fa";
-import { toast } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const location = useLocation();
-  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
-  const navigate = useNavigate();
-
-  // from - redirect
-  const redirectLocation = location?.state?.from?.pathname || "/";
-
-  // google provider
-  const googleProvider = new GoogleAuthProvider();
-  // github provider
-  const githubProvider = new GithubAuthProvider();
-
-  // handle google sign in
-  const handleGoogleLogin = () => {
-    googleLogin(googleProvider)
-      .then((result) => {
-        const loggedUser = result.user;
-        // console.log(loggedUser);
-
-        // naviagte to the location
-        navigate(redirectLocation);
-      })
-      .catch((err) => console.log(err.message));
-  };
-
-  // handle github login
-  const handleGithubLogin = () => {
-    githubLogin(githubProvider)
-      .then((res) => {
-        console.log(res.user);
-        navigate(redirectLocation);
-      })
-      .catch((err) => console.log(err?.message));
-  };
-
   // sign in user
   const handleLogin = (e) => {
     // preventing refreshing
@@ -55,23 +17,6 @@ const Login = () => {
     console.log(email, password);
 
     // login user
-    loginUser(email, password)
-      .then((res) => {
-        const loggedUser = res.user;
-        // console.log(loggedUser);
-
-        // toaster
-        toast.success("Login Successfull");
-        
-        // redirected to main location
-        navigate(redirectLocation);
-      })
-      .catch((err) => {
-        // console.log(err?.message);
-        if (err?.message) {
-          setLoginError("Please insert correct email and password!");
-        }
-      });
 
     // reseting form value
     e.target.reset();
@@ -123,20 +68,9 @@ const Login = () => {
                 <Button
                   variant=""
                   className="w-100 btn-outline-primary"
-                  onClick={handleGoogleLogin}
                 >
                   <FaGoogle className="me-2" />
                   SignIn with google
-                </Button>
-              </div>
-              <div>
-                <Button
-                  variant=""
-                  className="w-100 btn-outline-primary"
-                  onClick={handleGithubLogin}
-                >
-                  <FaGithub className="me-2" />
-                  SignIn with Github
                 </Button>
               </div>
               <p className="text-center pt-4">

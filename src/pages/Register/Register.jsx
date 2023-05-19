@@ -1,16 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
-import { AuthContext } from "../../providers/AuthProvider";
-import { toast } from "react-hot-toast";
+
 
 const Register = () => {
-  const navigate = useNavigate();
-  const [toggle, setToggle] = useState(true);
   const [passwordError, setPasswordError] = useState("");
-
-  // context
-  const { registerUser, updateUser } = useContext(AuthContext);
 
   // create user
   const handleRegister = (e) => {
@@ -29,28 +23,7 @@ const Register = () => {
       return;
     }
     // user creation
-    registerUser(email, password)
-    .then(res => {
-      const validUser = res.user;
-      
-      // updated for ui
-      validUser.displayName = name;
-      validUser.photoURL = photo;
-      // console.log(validUser);
-
-      // update user
-      updateUser(name, photo)
-      .then(() => {})
-      .catch(err => console.log(err?.message));
-      
-      // alert toast
-      toast.success("Registration successfully");
-      // navigate to home
-      navigate("/");
-    })
-    .catch(err => {
-      console.log(err.message);
-    })
+    
     // reseting form value
     e.target.reset();
   };
@@ -116,18 +89,9 @@ const Register = () => {
                 <p className="text-danger">
                   <small>{passwordError}</small>
                 </p>
-                <Form.Group className="pt-3" id="formGridCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label="Accept Terms and conditions"
-                    onClick={() => setToggle(!toggle)}
-                  />
-                </Form.Group>
                 <div>
                   <button
-                    className={`btn btn-primary mt-3 w-100 fw-bold fs-5 ${
-                      toggle ? "disabled" : ""
-                    }`}
+                    className={`btn btn-primary mt-3 w-100 fw-bold fs-5`}
                   >
                     Signup
                   </button>
