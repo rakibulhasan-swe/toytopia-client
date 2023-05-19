@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
+  const { userLogin } = useContext(AuthContext);
   // sign in user
   const handleLogin = (e) => {
     // preventing refreshing
@@ -14,9 +17,17 @@ const Login = () => {
     // form values
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     // login user
+    userLogin(email, password)
+    .then((res) => {
+      // console.log(res.user);
+      toast.success("Login Successfull!!");
+    })
+    .catch(err => {
+      setLoginError("Please insert correct email and passowrd!");
+    })
 
     // reseting form value
     e.target.reset();
@@ -65,10 +76,7 @@ const Login = () => {
               </form>
               <p className="text-center">or</p>
               <div className="pb-3">
-                <Button
-                  variant=""
-                  className="w-100 btn-outline-primary"
-                >
+                <Button variant="" className="w-100 btn-outline-primary">
                   <FaGoogle className="me-2" />
                   SignIn with google
                 </Button>

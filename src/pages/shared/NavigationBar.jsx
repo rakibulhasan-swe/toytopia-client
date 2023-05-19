@@ -6,7 +6,14 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const NavigationBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+
+  // logout
+  const handleLogout = () => {
+    logout()
+    .then(() => {})
+    .catch(err => console.log(err));
+  }
   return (
     <>
       <Navbar
@@ -86,7 +93,7 @@ const NavigationBar = () => {
                 </Link>
               )}
               {user ? (
-                <Link className="btn btn-danger ms-3">
+                <Link className="btn btn-danger ms-3" onClick={handleLogout}>
                   Logout
                 </Link>
               ) : (
