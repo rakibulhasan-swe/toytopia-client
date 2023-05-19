@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const NavigationBar = () => {
   return (
@@ -14,12 +15,12 @@ const NavigationBar = () => {
       >
         <Container>
           <NavLink to={"/"}>
-            {/* <img
-              style={{ width: "8rem" }}
+            <img
+              style={{ width: "7rem" }}
               src={logo}
               className="img-fluid"
               alt="Logo of this page"
-            ></img> */}
+            ></img>
           </NavLink>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
