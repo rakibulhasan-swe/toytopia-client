@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const NavigationBar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Navbar
@@ -57,24 +60,16 @@ const NavigationBar = () => {
               >
                 Contact
               </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active nav-link fw-bold px-3" : "nav-link px-3"
-                }
-                to={"/login"}
-              >
-                Login
-              </NavLink>
             </Nav>
             <div className="d-flex align-items-center">
               {/* tooltip */}
-              {/* <ReactTooltip
+              <ReactTooltip
                 id="displayName"
                 place="bottom"
                 variant="info"
                 content={user?.displayName}
-              /> */}
-              {/* {user && (
+              />
+              {user && (
                 <Link data-tooltip-id="displayName">
                   {user?.photoURL ? (
                     <>
@@ -91,14 +86,14 @@ const NavigationBar = () => {
                 </Link>
               )}
               {user ? (
-                <Link className="btn btn-danger ms-3" onClick={handleLogout}>
+                <Link className="btn btn-danger ms-3">
                   Logout
                 </Link>
               ) : (
                 <Link className="btn btn-primary px-3" to={"/login"}>
                   Login
                 </Link>
-              )} */}
+              )}
             </div>
           </Navbar.Collapse>
         </Container>

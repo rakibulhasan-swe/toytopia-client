@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap";
-
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const [passwordError, setPasswordError] = useState("");
+  const { createUser, updateUser } = useContext(AuthContext);
 
   // create user
   const handleRegister = (e) => {
@@ -23,7 +24,25 @@ const Register = () => {
       return;
     }
     // user creation
-    
+    createUser(email, password)
+    .then(result => {
+      console.log(result?.user);
+      const registerdUser = result?.user;
+      // updating in ui
+      registerdUser.displayName = name;
+      registerdUser.photoURL = photo;
+
+      // updating in firebase
+      updateUser(name, photo)
+      .then(() => {})
+      .catch((err) => console.log(err))
+
+      // alert
+      toast.success("Registration successfull!");
+
+    })
+    .catch(err => console.log(err?.message))
+
     // reseting form value
     e.target.reset();
   };
@@ -90,9 +109,7 @@ const Register = () => {
                   <small>{passwordError}</small>
                 </p>
                 <div>
-                  <button
-                    className={`btn btn-primary mt-3 w-100 fw-bold fs-5`}
-                  >
+                  <button className={`btn btn-primary mt-3 w-100 fw-bold fs-5`}>
                     Signup
                   </button>
                 </div>
