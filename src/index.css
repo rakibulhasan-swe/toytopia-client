@@ -21,13 +21,13 @@
   }
   .btn-outline-primary{
     background-color: #fff !important;
-    color: #797ff7 !important;
-    border: 1px solid #797ff7 !important;
+    color: #19A7CE !important;
+    border: 1px solid #19A7CE !important;
   }
   .btn-outline-primary:hover{
-    background-color: #797ff7 !important;
+    background-color: #19A7CE !important;
     color: #fff !important;
-    border: 1px solid #797ff7 !important;
+    border: 1px solid #19A7CE !important;
   }
   .active {
     color: #19A7CE !important;
@@ -37,8 +37,8 @@
     backdrop-filter: blur(10px);
   }
   .img-border{
-      border: 2px solid #797ff7;
+      border: 2px solid #19A7CE;
   }
   .d-text{
-    color: #797ff7 !important;
+    color: #19A7CE !important;
   }

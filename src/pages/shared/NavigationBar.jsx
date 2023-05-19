@@ -11,9 +11,9 @@ const NavigationBar = () => {
   // logout
   const handleLogout = () => {
     logout()
-    .then(() => {})
-    .catch(err => console.log(err));
-  }
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <Navbar
@@ -67,6 +67,30 @@ const NavigationBar = () => {
               >
                 Contact
               </NavLink>
+              {user && (
+                <>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "active nav-link fw-bold px-3"
+                        : "nav-link px-3"
+                    }
+                    to={"/myToys"}
+                  >
+                    My Toys
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "active nav-link fw-bold px-3"
+                        : "nav-link px-3"
+                    }
+                    to={"/addToy"}
+                  >
+                    Add A Toy
+                  </NavLink>
+                </>
+              )}
             </Nav>
             <div className="d-flex align-items-center">
               {/* tooltip */}

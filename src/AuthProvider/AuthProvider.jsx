@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -37,16 +38,17 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  // google login
+  const googleLogin = (provider) => {
+    setLoader(true);
+    return signInWithPopup(auth, provider);
+  }
+
   // logout
   const logout = () => {
     setLoader(true);
     return signOut(auth);
   }
-
-
-
-
-
 
   // user observer
   useEffect(() => {
@@ -65,6 +67,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUser,
     userLogin,
+    googleLogin,
     logout,
   };
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-// import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -9,21 +9,21 @@ const Footer = () => {
           <div className="row g-4">
             <div className="col-md-6 col-lg-4">
               <div className="pb-3">
-                {/* <img
+                <img
                   src={logo}
                   className="img-fluid"
-                  style={{ width: "15rem" }}
+                  style={{ width: "13rem" }}
                   alt=""
-                /> */}
+                />
               </div>
-              <p>We are a Bangladesh based food agency.</p>
+              <p>We are a Bangladesh based Toy shop.</p>
               <p>
                 <span className="d-block">
                   Middle Badda, Dhaka 1212, Bangladesh
                 </span>
                 <span className="d-block">Phone: +098988998 98</span>
                 <span className="d-block">
-                  Email: info@cookingchronicles.com
+                  Email: info@toytopia.com
                 </span>
               </p>
             </div>
@@ -31,22 +31,22 @@ const Footer = () => {
               <h5 className="pb-4">Our Services</h5>
               <p>
                 <a className="text-decoration-none text-white" href="">
-                  Master Chef
+                  Best Toys
                 </a>
               </p>
               <p>
                 <a className="text-decoration-none text-white" href="">
-                  Food Delivery
+                  Kids Zone
                 </a>
               </p>
               <p>
                 <a className="text-decoration-none text-white" href="">
-                  Food Safety
+                  Foreign Toys
                 </a>
               </p>
               <p>
                 <a className="text-decoration-none text-white" href="">
-                  Hygenic
+                  Best Sevice
                 </a>
               </p>
             </div>

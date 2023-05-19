@@ -4,10 +4,22 @@ import { Button } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, googleLogin } = useContext(AuthContext);
+
+  const provider = new GoogleAuthProvider();
+
+  // google login
+  const handleGoogleLogin = () => {
+    googleLogin(provider)
+    .then(res => {
+      const loggedUser = res?.user;
+    })
+    .catch(err => console.log(err?.message));
+  };
   // sign in user
   const handleLogin = (e) => {
     // preventing refreshing
@@ -21,13 +33,13 @@ const Login = () => {
 
     // login user
     userLogin(email, password)
-    .then((res) => {
-      // console.log(res.user);
-      toast.success("Login Successfull!!");
-    })
-    .catch(err => {
-      setLoginError("Please insert correct email and passowrd!");
-    })
+      .then((res) => {
+        // console.log(res.user);
+        toast.success("Login Successfull!!");
+      })
+      .catch((err) => {
+        setLoginError("Please insert correct email and passowrd!");
+      });
 
     // reseting form value
     e.target.reset();
@@ -76,7 +88,11 @@ const Login = () => {
               </form>
               <p className="text-center">or</p>
               <div className="pb-3">
-                <Button variant="" className="w-100 btn-outline-primary">
+                <Button
+                  variant=""
+                  className="w-100 btn-outline-primary"
+                  onClick={handleGoogleLogin}
+                >
                   <FaGoogle className="me-2" />
                   SignIn with google
                 </Button>
