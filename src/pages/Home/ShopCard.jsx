@@ -8,8 +8,8 @@ const ShopCard = ({ toy }) => {
   return (
     <>
       <div className="col-md-6 col-lg-4">
-        <Card>
-          <Card.Img variant="top" src={picture} style={{ height: "14rem" }} />
+        <Card className="shadow border-0">
+          <Card.Img variant="top" src={picture} style={{ height: "17rem" }} />
           <Card.Body>
             <Card.Title>{toyName}</Card.Title>
             <Card.Text>Price: {price}</Card.Text>
