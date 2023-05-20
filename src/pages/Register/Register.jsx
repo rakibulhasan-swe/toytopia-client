@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState("");
   const { createUser, updateUser } = useContext(AuthContext);
 
@@ -39,6 +40,8 @@ const Register = () => {
 
       // alert
       toast.success("Registration successfull!");
+      // navigate to home
+      navigate("/", {replace: true});
 
     })
     .catch(err => console.log(err?.message))

@@ -8,37 +8,41 @@ import AllToys from "../pages/AllToys/AllToys";
 import PrivateRoute from "./PrivateRoute";
 import Details from "../pages/Details/Details";
 
-
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <MainLayout />,
-        errorElement: <ErrorPage />,
-        children: ([
-            {
-                path: "/",
-                element: <Home />
-            },
-            {
-                path: "allToys",
-                element: <AllToys />,
-                loader: () => fetch('http://localhost:5000/allToys')
-            },
-            {
-                path: "/details/:id",
-                element: <PrivateRoute><Details /></PrivateRoute>
-            },
-            {
-                path: "/login",
-                element: <Login />
-            },
-            {
-                path: "/register",
-                element: <Register />
-            },
-        ])
-    }
+        element: <Home />,
+      },
+      {
+        path: "allToys",
+        element: <AllToys />,
+        loader: () => fetch("http://localhost:5000/allToys"),
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/toys/${params.id}`),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
+  },
 ]);
-
 
 export default router;
