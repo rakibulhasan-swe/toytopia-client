@@ -3,6 +3,7 @@ import Banner from './Banner';
 import Shop from './Shop';
 import Gallery from './Gallery';
 import Newsletter from './Newsletter';
+import Contact from './Contact';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Gallery />
             <Shop />
             <Newsletter />
+            <Contact />
         </>
     );
 };
