@@ -38,9 +38,7 @@ const AllToys = () => {
                 <td>{toy.sellerName}</td>
                 <td>{toy.toyName}</td>
                 <td>
-                  {toy?.subCategory.map((sc, sci) => (
-                    <span key={sci}>{sc}, </span>
-                  ))}
+                  {toy?.subCategory}
                 </td>
                 <td>{toy.price}</td>
                 <td>{toy.quantity}</td>
