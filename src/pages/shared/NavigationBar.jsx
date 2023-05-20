@@ -59,14 +59,6 @@ const NavigationBar = () => {
               >
                 Blogs
               </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active nav-link fw-bold px-3" : "nav-link px-3"
-                }
-                to={"/contact"}
-              >
-                Contact
-              </NavLink>
               {user && (
                 <>
                   <NavLink

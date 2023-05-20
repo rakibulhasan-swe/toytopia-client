@@ -1,17 +1,27 @@
+import { Rating } from "@smastrom/react-rating";
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const ShopCard = ({ toy }) => {
   const { _id, picture, toyName, price, rating } = toy;
   return (
     <>
-      <div className="col-md-6">
+      <div className="col-md-6 col-lg-4">
         <Card>
-          <Card.Img variant="top" src={picture} style={{height: "14rem"}} />
+          <Card.Img variant="top" src={picture} style={{ height: "14rem" }} />
           <Card.Body>
             <Card.Title>{toyName}</Card.Title>
             <Card.Text>Price: {price}</Card.Text>
-            <Button variant="primary">View Details</Button>
+            <Rating
+              className="pb-3"
+              style={{ maxWidth: "7rem" }}
+              value={rating}
+              readOnly
+            />
+            <Link className="btn btn-primary" to={`/details/${_id}`}>
+              View Details
+            </Link>
           </Card.Body>
         </Card>
       </div>

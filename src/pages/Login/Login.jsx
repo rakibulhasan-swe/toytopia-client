@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -8,17 +8,27 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
   const { userLogin, googleLogin } = useContext(AuthContext);
+
+  // redirect location
+  const redirect = location?.state?.from?.pathname || "/";
 
   const provider = new GoogleAuthProvider();
 
   // google login
   const handleGoogleLogin = () => {
     googleLogin(provider)
-    .then(res => {
-      const loggedUser = res?.user;
-    })
-    .catch(err => console.log(err?.message));
+      .then((res) => {
+        const loggedUser = res?.user;
+
+        // toaster
+        toast.success("Login Successfull!");
+        // redirect page
+        navigate(redirect, { replace: true });
+      })
+      .catch((err) => console.log(err?.message));
   };
   // sign in user
   const handleLogin = (e) => {
@@ -36,6 +46,8 @@ const Login = () => {
       .then((res) => {
         // console.log(res.user);
         toast.success("Login Successfull!!");
+        // redirect page
+        navigate(redirect, { replace: true });
       })
       .catch((err) => {
         setLoginError("Please insert correct email and passowrd!");

@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationBar from '../pages/shared/NavigationBar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Footer from '../pages/shared/Footer';
 import { Toaster } from 'react-hot-toast';
 
@@ -13,6 +13,7 @@ const MainLayout = () => {
             </div>
             <Footer />
             <Toaster />
+            <ScrollRestoration />
         </>
     );
 };
