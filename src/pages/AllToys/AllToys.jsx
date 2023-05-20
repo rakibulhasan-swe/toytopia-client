@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, InputGroup, Table } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
   const allToys = useLoaderData();
@@ -45,7 +45,9 @@ const AllToys = () => {
                 <td>{toy.price}</td>
                 <td>{toy.quantity}</td>
                 <td>
-                  <Button variant="dark">View Details</Button>
+                  <Link className="btn btn-primary" to={`/details/${toy?._id}`}>
+                    View Details
+                  </Link>
                 </td>
               </tr>
             ))}
