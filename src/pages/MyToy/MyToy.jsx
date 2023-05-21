@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { Button, Table } from "react-bootstrap";
+import { Button, Form, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Head from "../../Components/Head";
@@ -46,10 +46,33 @@ const MyToy = () => {
     });
   };
 
+  const handleSortToy = (e) => {
+    e.preventDefault();
+
+    fetch(`http://localhost:5000/toysort/${user?.email}/${e.target.value}`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setToys(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
-    <Head title={"My toys"} />
+      <Head title={"My toys"} />
       <div className="container table-responsive py-5">
+        <div className="text-end mb-2">
+          <Form.Select
+            onChange={handleSortToy}
+            className="d-inline w-25"
+            aria-label="Default select example"
+          >
+            <option>Sort Toy</option>
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+          </Form.Select>
+        </div>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -68,7 +91,11 @@ const MyToy = () => {
           </thead>
           <tbody>
             {toys?.map((toy, index) => (
-              <tr key={toy?._id}>
+              <tr
+                data-aos="fade-right"
+                // data-aos-duration={index * 1000}
+                key={toy?._id}
+              >
                 <td>{index + 1}</td>
                 <td>
                   <img

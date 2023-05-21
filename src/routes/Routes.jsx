@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "allToys",
         element: <AllToys />,
-        loader: () => fetch("http://localhost:5000/allToys"),
+        loader: () => fetch("https://toytopia-server-psi.vercel.app/allToys"),
       },
       {
         path: "/details/:id",
