@@ -35,13 +35,13 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(`https://toytopia-server-psi.vercel.app/toys/${params.id}`),
       },
       {
         path: "/updateToy/:id",
         element: <UpdateToy />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(`https://toytopia-server-psi.vercel.app/toys/${params.id}`),
       },
       {
         path: "/addToy",

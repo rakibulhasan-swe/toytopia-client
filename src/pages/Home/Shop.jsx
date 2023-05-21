@@ -6,7 +6,7 @@ const Shop = () => {
   const [toys, setToys] = useState([]);
   const [category, setCategory] = useState("avengers");
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys/${category}`)
+    fetch(`https://toytopia-server-psi.vercel.app/allToys/${category}`)
       .then((res) => res.json())
       .then((data) => setToys(data))
       .catch((err) => console.log(err));

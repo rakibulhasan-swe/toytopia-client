@@ -8,7 +8,7 @@ import Head from "../../Components/Head";
 const MyToy = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
-  const uri = `http://localhost:5000/mytoy?email=${user?.email}`;
+  const uri = `https://toytopia-server-psi.vercel.app/mytoy?email=${user?.email}`;
   useEffect(() => {
     fetch(uri)
       .then((res) => res.json())
@@ -27,7 +27,7 @@ const MyToy = () => {
     }).then((willDelete) => {
       if (willDelete) {
         // deleting from database
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`https://toytopia-server-psi.vercel.app/toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -50,7 +50,7 @@ const MyToy = () => {
     e.preventDefault();
 
     if (e.target.value) {
-      fetch(`http://localhost:5000/toysort/${user?.email}/${e.target.value}`)
+      fetch(`https://toytopia-server-psi.vercel.app/toysort/${user?.email}/${e.target.value}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

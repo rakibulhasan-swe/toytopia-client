@@ -48,7 +48,7 @@ const UpdateToy = () => {
     // console.log(newToy);
 
     // send to server
-    fetch(`http://localhost:5000/updatetoy/${_id}`, {
+    fetch(`https://toytopia-server-psi.vercel.app/updatetoy/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -10,7 +10,7 @@ const AllToys = () => {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/search/${e.target.toyName.value}`)
+    fetch(`https://toytopia-server-psi.vercel.app/search/${e.target.toyName.value}`)
     .then(res => res.json())
     .then(data => setToys(data))
     .catch(err => console.log(err))
