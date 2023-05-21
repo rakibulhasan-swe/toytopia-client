@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const MyToy = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,36 @@ const MyToy = () => {
       .then((data) => setToys(data))
       .catch((err) => console.log(err));
   }, []);
+
+  // handle delete
+  const handleDelete = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover the data!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        // deleting from database
+        fetch(`http://localhost:5000/toys/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              swal("Your toys has been deleted!", {
+                icon: "success",
+              });
+
+              // updating the state
+              const remaining = toys.filter((toy) => toy._id !== id);
+              setToys(remaining);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <>
@@ -34,18 +65,22 @@ const MyToy = () => {
           </thead>
           <tbody>
             {toys?.map((toy, index) => (
-              <tr key={toy._id}>
+              <tr key={toy?._id}>
                 <td>{index + 1}</td>
                 <td>
-                  <img src={toy.picture} style={{ maxHeight: "2rem" }} alt="" />
+                  <img
+                    src={toy?.picture}
+                    style={{ maxHeight: "2rem" }}
+                    alt=""
+                  />
                 </td>
-                <td>{toy.toyName}</td>
-                <td>{toy.sellerName}</td>
-                <td>{toy.sellerEmail}</td>
+                <td>{toy?.toyName}</td>
+                <td>{toy?.sellerName}</td>
+                <td>{toy?.sellerEmail}</td>
                 <td>{toy?.subCategory}</td>
-                <td>${toy.price}</td>
-                <td>{toy.rating}stars</td>
-                <td>{toy.quantity}</td>
+                <td>${toy?.price}</td>
+                <td>{toy?.rating}stars</td>
+                <td>{toy?.quantity}</td>
                 <td>
                   <Link
                     className="btn btn-primary btn-sm"
@@ -55,16 +90,17 @@ const MyToy = () => {
                   </Link>
                   <Link
                     className="btn btn-warning btn-sm mx-1"
-                    to={``}
+                    to={`/updateToy/${toy?._id}`}
                   >
                     Update
                   </Link>
-                  <Link
-                    className="btn btn-danger btn-sm"
-                    to={``}
+                  <Button
+                    variant="danger"
+                    className="btn-sm"
+                    onClick={() => handleDelete(toy?._id)}
                   >
                     Delete
-                  </Link>
+                  </Button>
                 </td>
               </tr>
             ))}
