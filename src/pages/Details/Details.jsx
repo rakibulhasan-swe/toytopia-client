@@ -5,7 +5,7 @@ import Head from "../../Components/Head";
 
 const Details = () => {
   const toy = useLoaderData();
-  const { picture, sellerName, toyName, price, rating, quantity, description } =
+  const { picture, sellerName, sellerEmail, toyName, price, rating, quantity, description } =
     toy;
   return (
     <>
@@ -25,11 +25,12 @@ const Details = () => {
               <div>
                 <h2>{toyName}</h2>
                 <h4>Price: ${price}</h4>
-                <p className="py-3">{description}</p>
+                <p className="py-3 lh-lg">{description}</p>
               </div>
               <div>
-                <span className="d-block">Seller Name: {sellerName}</span>
-                <span className="d-block">Available Quantity: {quantity}</span>
+                <p><span className="d-text">Seller Name: </span>{sellerName}</p>
+                <p><span className="d-text">Seller Email: </span>{sellerEmail}</p>
+                <p><span className="d-text">Available Quantity: </span>{quantity}</p>
                 <Rating
                   className="pb-3"
                   style={{ maxWidth: "7rem" }}
