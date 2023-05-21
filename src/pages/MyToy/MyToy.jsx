@@ -49,13 +49,15 @@ const MyToy = () => {
   const handleSortToy = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/toysort/${user?.email}/${e.target.value}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setToys(data);
-      })
-      .catch((err) => console.log(err));
+    if (e.target.value) {
+      fetch(`http://localhost:5000/toysort/${user?.email}/${e.target.value}`)
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          setToys(data);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -68,7 +70,7 @@ const MyToy = () => {
             className="d-inline w-25"
             aria-label="Default select example"
           >
-            <option>Sort Toy</option>
+            <option value="">Sort Toy</option>
             <option value="asc">Asc</option>
             <option value="desc">Desc</option>
           </Form.Select>
@@ -91,11 +93,7 @@ const MyToy = () => {
           </thead>
           <tbody>
             {toys?.map((toy, index) => (
-              <tr
-                data-aos="fade-right"
-                // data-aos-duration={index * 1000}
-                key={toy?._id}
-              >
+              <tr data-aos="fade-up" data-aos-duration={1000} key={toy?._id}>
                 <td>{index + 1}</td>
                 <td>
                   <img
