@@ -15,8 +15,8 @@ const Shop = () => {
     <>
       <div className="container py-5">
         <div className="text-center">
-          <h2>We Love Trends</h2>
-          <p>Featured Products</p>
+          <h2 className="fs-2 fw-semibold">We Love Trends</h2>
+          <p className="fw-light">Featured Products</p>
         </div>
         <Tabs>
           <TabList>
@@ -28,8 +28,8 @@ const Shop = () => {
           <TabPanel>
             <div className="conatiner">
               <div className="row py-5 g-4">
-                {toys.map((toy, index) => (
-                  <ShopCard key={toy._id} index={index} toy={toy} />
+                {toys.map((toy) => (
+                  <ShopCard key={toy._id} toy={toy} />
                 ))}
               </div>
             </div>

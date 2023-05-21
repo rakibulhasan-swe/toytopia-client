@@ -5,7 +5,10 @@ import { toast } from "react-hot-toast";
 const Newsletter = () => {
   return (
     <>
-      <div className="subscribe d-flex align-items-center mb-5">
+      <div
+        className="subscribe d-flex align-items-center mb-5"
+        data-aos="fade-right"
+      >
         <Container className="text-white">
           <h1 className="fw-bold">Subscribe to our Newsletter</h1>
           <p className="fw-light py-3">

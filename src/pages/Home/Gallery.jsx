@@ -11,8 +11,8 @@ const Gallery = () => {
     <>
       <div className="container py-5">
         <div className="text-center pb-5">
-          <h2>Gallery</h2>
-          <p>These are the most selled toys</p>
+          <h2 className="fs-2 fw-semibold">Gallery</h2>
+          <p className="fw-light">These are the most selled toys</p>
         </div>
         <div className="row g-4 d-flex justify-content-center align-items-center">
           <div className="col-6 col-md-4 col-lg-2">

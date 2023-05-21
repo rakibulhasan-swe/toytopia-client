@@ -6,7 +6,7 @@ const Contact = () => {
     <div>
       <section class="container py-5" id="contact">
         <div class="text-center">
-          <h3 class="fs-2 fw-bold">Contact With Us</h3>
+          <h2 class="fs-2 fw-semibold">Contact With Us</h2>
           <p class="fw-light pt-3">
             If you have any query. Feel free to contact us.
           </p>
