@@ -28,8 +28,8 @@ const Shop = () => {
           <TabPanel>
             <div className="conatiner">
               <div className="row py-5 g-4">
-                {toys.map((toy) => (
-                  <ShopCard key={toy._id} toy={toy} />
+                {toys.map((toy, index) => (
+                  <ShopCard key={toy._id} index={index} toy={toy} />
                 ))}
               </div>
             </div>
@@ -37,8 +37,8 @@ const Shop = () => {
           <TabPanel>
             <div className="conatiner">
               <div className="row py-5 g-4">
-                {toys.map((toy) => (
-                  <ShopCard key={toy._id} toy={toy} />
+                {toys.map((toy, index) => (
+                  <ShopCard key={toy._id} index={index} toy={toy} />
                 ))}
               </div>
             </div>
@@ -46,8 +46,8 @@ const Shop = () => {
           <TabPanel>
             <div className="conatiner">
               <div className="row py-5 g-4">
-                {toys.map((toy) => (
-                  <ShopCard key={toy._id} toy={toy} />
+                {toys.map((toy, index) => (
+                  <ShopCard key={toy._id} index={index} toy={toy} />
                 ))}
               </div>
             </div>

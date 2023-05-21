@@ -95,14 +95,17 @@ const NavigationBar = () => {
               {user && (
                 <Link data-tooltip-id="displayName">
                   {user?.photoURL ? (
-                    <>
+                    <div
+                      className="rounded-circle img-border overflow-hidden"
+                      style={{ width: "2.4rem", height: "2.4rem" }}
+                    >
                       <img
-                        className="rounded-circle img-border"
-                        style={{ width: "2.4rem" }}
+                        className="img-fluid"
+                        style={{ objectFit: "cover" }}
                         src={user?.photoURL}
                         alt="user image"
                       />
-                    </>
+                    </div>
                   ) : (
                     <Button variant="warning">{user?.displayName}</Button>
                   )}

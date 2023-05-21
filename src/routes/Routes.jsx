@@ -10,6 +10,7 @@ import Details from "../pages/Details/Details";
 import AddToy from "../pages/AddToy/AddToy";
 import MyToy from "../pages/MyToy/MyToy";
 import UpdateToy from "../pages/UpdateToy/UpdateToy";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
             <MyToy />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/blogs",
+        element: <Blog />
       },
       {
         path: "/login",

@@ -3,11 +3,15 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ShopCard = ({ toy }) => {
+const ShopCard = ({ toy, index }) => {
   const { _id, picture, toyName, price, rating } = toy;
   return (
     <>
-      <div className="col-md-6 col-lg-4">
+      <div
+        className="col-md-6 col-lg-4"
+        data-aos="fade-up"
+        data-aos-duration={index*1000}
+      >
         <Card className="shadow border-0">
           <Card.Img variant="top" src={picture} style={{ height: "17rem" }} />
           <Card.Body>
