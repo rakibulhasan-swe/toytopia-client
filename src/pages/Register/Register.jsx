@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import Head from "../../Components/Head";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ const Register = () => {
 
   return (
     <>
+    <Head title={"Register"} />
       <div className="container mb-5">
         <div className="row d-flex justify-content-center pt-5">
           <div className="col-md-5">

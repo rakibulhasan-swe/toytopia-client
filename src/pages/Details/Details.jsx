@@ -1,6 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Head from "../../Components/Head";
 
 const Details = () => {
   const toy = useLoaderData();
@@ -8,6 +9,7 @@ const Details = () => {
     toy;
   return (
     <>
+      <Head title={"Details"} />
       <div className="container py-5">
         <div className="row g-4 d-flex align-items-center justify-content-center">
           <div className="col-md-6">

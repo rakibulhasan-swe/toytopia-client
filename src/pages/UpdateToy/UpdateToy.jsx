@@ -2,9 +2,10 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import Head from "../../Components/Head";
 
 const UpdateToy = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const toy = useLoaderData();
   const {
     _id,
@@ -61,7 +62,7 @@ const UpdateToy = () => {
             icon: "success",
           });
           // navigate to previous page
-          navigate("/mytoys", {replace: true});
+          navigate("/mytoys", { replace: true });
         }
       })
       .catch((err) => console.log(err));
@@ -71,6 +72,7 @@ const UpdateToy = () => {
   };
   return (
     <div className="container py-5">
+      <Head title={"Update toy"} />
       <div className="w-75 mx-auto bg-light p-5">
         <Form onSubmit={updateToy}>
           <div className="container">

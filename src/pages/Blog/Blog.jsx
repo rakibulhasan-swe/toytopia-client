@@ -1,8 +1,10 @@
 import React from "react";
+import Head from "../../Components/Head";
 
 const Blog = () => {
   return (
     <>
+    <Head title={"Blogs"} />
       <div className="container pt-5">
         <div className="row g-4">
           <div className="col-md-6">

@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import Head from "../../Components/Head";
 
 const MyToy = () => {
   const { user } = useContext(AuthContext);
@@ -47,6 +48,7 @@ const MyToy = () => {
 
   return (
     <>
+    <Head title={"My toys"} />
       <div className="container table-responsive py-5">
         <Table striped bordered hover>
           <thead>

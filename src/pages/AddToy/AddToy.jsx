@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import swal from "sweetalert";
+import Head from "../../Components/Head";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
@@ -53,6 +54,7 @@ const AddToy = () => {
   };
   return (
     <div className="container py-5">
+      <Head title={"Add a toy"} />
       <div className="w-75 mx-auto bg-light p-5">
         <Form onSubmit={createNewToy}>
           <div className="container">

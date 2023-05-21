@@ -5,6 +5,7 @@ import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import Head from "../../Components/Head";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
@@ -58,6 +59,7 @@ const Login = () => {
   };
   return (
     <>
+    <Head title={"Login"} />
       <div className="container pt-4">
         <div className="row d-flex justify-content-center pt-5">
           <div className="col-md-5">

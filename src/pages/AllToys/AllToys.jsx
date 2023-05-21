@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Form, InputGroup, Table } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
+import Head from "../../Components/Head";
 
 const AllToys = () => {
   const allToys = useLoaderData();
   return (
     <div className="py-5 container">
+      <Head title={"All toys"} />
       <div className="w-50 mx-auto mb-5">
         <InputGroup className="mb-3">
           <Form.Control
