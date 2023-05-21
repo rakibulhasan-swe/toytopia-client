@@ -60,6 +60,7 @@ const MyToy = () => {
               <th>Price</th>
               <th>Rating</th>
               <th>Quantity</th>
+              <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -76,11 +77,12 @@ const MyToy = () => {
                 </td>
                 <td>{toy?.toyName}</td>
                 <td>{toy?.sellerName}</td>
-                <td>{toy?.sellerEmail}</td>
+                <td>{toy?.sellerEmail.slice(0, 8)}..</td>
                 <td>{toy?.subCategory}</td>
                 <td>${toy?.price}</td>
                 <td>{toy?.rating}stars</td>
                 <td>{toy?.quantity}</td>
+                <td>{toy?.description.slice(0, 7)}..</td>
                 <td>
                   <Link
                     className="btn btn-primary btn-sm"

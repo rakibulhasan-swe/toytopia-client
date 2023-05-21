@@ -35,13 +35,13 @@ const AllToys = () => {
             {allToys?.map((toy, index) => (
               <tr key={toy._id}>
                 <td>{index + 1}</td>
-                <td>{toy.sellerName}</td>
-                <td>{toy.toyName}</td>
+                <td>{toy?.sellerName}</td>
+                <td>{toy?.toyName}</td>
                 <td>
                   {toy?.subCategory}
                 </td>
-                <td>{toy.price}</td>
-                <td>{toy.quantity}</td>
+                <td>${toy?.price}</td>
+                <td>{toy?.quantity}</td>
                 <td>
                   <Link className="btn btn-primary" to={`/details/${toy?._id}`}>
                     View Details

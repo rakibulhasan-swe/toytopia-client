@@ -101,7 +101,7 @@ const Footer = () => {
           </div>
         </div>
         <p className="text-center fw-light pt-5">
-          All rights reserved | &copy; 2023 cooking chronicles
+          All rights reserved | &copy; 2023 toytopia
         </p>
       </footer>
     </>
